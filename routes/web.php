@@ -12,7 +12,21 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+ 
+Route::namespace('Site')->group(
+    function () {
+        // Pagina Inicial
+        Route::get('/','HomeController');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+        // Retorna os Produtos Cadastrados
+        Route::get('produtos','ProductsController@index');
+        Route::get('produtos/{slug}','ProductsController@show');
+
+        // Sobre Nos
+        Route::view('sobre','site.sobre.index');
+
+        // Fale conosco
+        Route::get('contato','ContactController@index');
+        Route::post('contato','ContactController@contactclear');
+    }
+);
