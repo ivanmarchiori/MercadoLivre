@@ -17,16 +17,22 @@ Route::namespace('Site')->group(
     function () {
         // Pagina Inicial
         Route::get('/','HomeController');
+        
+        // Login
+        Route::get('login','LoginController');
+        
+        // Logout
+        Route::get('logout','LogoutController');
 
-        // Retorna os Produtos Cadastrados
-        Route::get('produtos','ProductsController@index');
-        Route::get('produtos/{slug}','ProductsController@show');
+        // Retorna as Lojas Cadastradas
+        Route::get('minhaslojas','MinhasLojasController@index');
+        Route::get('minhaslojas/{slug}','MinhasLojasController@show');
+
+        // Retorna as Anuncios
+        Route::get('meusanuncios','MeusAnunciosController@index');
+        Route::get('meusanuncios/{slug}','MeusAnunciosController@show');
 
         // Sobre Nos
         Route::view('sobre','site.sobre.index');
-
-        // Fale conosco
-        Route::get('contato','ContactController@index');
-        Route::post('contato','ContactController@contactclear');
     }
-);
+); 
